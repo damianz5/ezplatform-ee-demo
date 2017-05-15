@@ -4,12 +4,13 @@ default:
         error_reporting: -1 # Report all PHP errors
     extensions:
         Behat\MinkExtension:
-            base_url: 'http://localhost'
+            base_url: 'http://ezstudio_demo_behat.local'
             goutte: ~
             selenium2:
                 wd_host: 'http://localhost:4444/wd/hub'
             javascript_session: selenium2
-            browser_name: firefox
+            #browser_name: firefox 
+            browser_name: phantomjs
 
         Behat\Symfony2Extension:
             kernel:
@@ -37,4 +38,5 @@ imports:
     - vendor/ezsystems/date-based-publisher/behat_suites.yml
     - vendor/ezsystems/ezstudio-form-builder/behat_suites.yml
     - vendor/ezsystems/landing-page-fieldtype-bundle/behat_suites.yml
-    - vendor/ezsystems/ezstudio-demo-bundle/behat_suites.yml
+    #- vendor/ezsystems/ezstudio-demo-bundle/behat_suites.yml
+    - src/EzSystems/StudioDemoBundle/behat_suites.yml
