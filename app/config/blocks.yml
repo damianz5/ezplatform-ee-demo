@@ -1,0 +1,30 @@
+ezplatform_page_fieldtype:
+    blocks:
+        hero:
+            name: Hero
+            category: default
+            thumbnail: 'assets/images/page_builder/blocks/hero.svg'
+            configuration_template: '@EzPlatformPageBuilder/page_builder/block/config/embed.html.twig'
+            views:
+                default: { name: 'Default block layout', template: '@ezdesign/blocks/hero.html.twig' }
+            attributes:
+                text:
+                    name: Text
+                    type: text
+                    validators:
+                        not_blank:
+                            message: You must provide a text
+                        regexp:
+                            options:
+                                pattern: '/[^\\s]/'
+                            message: Only valid HTML code is allowed
+                contentId:
+                    name: Image
+                    type: embed
+                    validators:
+                        not_blank:
+                            message: You must provide value
+                        regexp:
+                            options:
+                                pattern: '/[0-9]+/'
+                            message: Choose a Content item

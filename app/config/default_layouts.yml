@@ -4,7 +4,7 @@ ezplatform_page_fieldtype:
             identifier: '1'
             name: '1 Zone, 1 Column'
             description: 'One zone in one column'
-            thumbnail: '/bundles/app/images/layouts/1.png'
+            thumbnail: '/assets/images/page_builder/layouts/1.png'
             template: '@ezdesign/layouts/1.html.twig'
             zones:
                 first:
@@ -14,7 +14,7 @@ ezplatform_page_fieldtype:
             identifier: '1_2'
             name: '2 Zone, 2 Column'
             description: 'Two zones in columns, narrow left, wide right'
-            thumbnail: '/bundles/app/images/layouts/1_2.png'
+            thumbnail: '/assets/images/page_builder/layouts/1_2.png'
             template: '@ezdesign/layouts/1_2.html.twig'
             zones:
                 first:
@@ -26,7 +26,7 @@ ezplatform_page_fieldtype:
             identifier: '1_2__1'
             name: '3 Zone, 2+1 Column'
             description: 'Three zones, two columns, narrow left, wide right in first row and one row'
-            thumbnail: '/bundles/app/images/layouts/1_2__1.png'
+            thumbnail: '/assets/images/page_builder/layouts/1_2__1.png'
             template: '@ezdesign/layouts/1_2__1.html.twig'
             zones:
                 first:
@@ -40,7 +40,7 @@ ezplatform_page_fieldtype:
             identifier: '2_1'
             name: '2 Zone, 2 Column'
             description: 'Two zones in columns, wide left, narrow right'
-            thumbnail: '/bundles/app/images/layouts/2_1.png'
+            thumbnail: '/assets/images/page_builder/layouts/2_1.png'
             template: '@ezdesign/layouts/2_1.html.twig'
             zones:
                 first:
@@ -52,7 +52,7 @@ ezplatform_page_fieldtype:
             identifier: '2_1__1'
             name: '3 Zone, 2+1 Column'
             description: 'Three zones, two columns, wide left, narrow right in first row and one row'
-            thumbnail: '/bundles/app/images/layouts/2_1__1.png'
+            thumbnail: '/assets/images/page_builder/layouts/2_1__1.png'
             template: '@ezdesign/layouts/2_1__1.html.twig'
             zones:
                 first:
@@ -61,6 +61,36 @@ ezplatform_page_fieldtype:
                     name: 'Second zone'
                 third:
                     name: 'Third zone'
+
+        '1w__1__1w':
+            identifier: '1w__1__1w'
+            name: '3 Zone, 1 Column'
+            description: 'Three zones, one column, two wide zones'
+            thumbnail: '/assets/images/page_builder/layouts/1w__1__1w.png'
+            template: '@ezdesign/layouts/1w__1__1w.html.twig'
+            zones:
+                first:
+                    name: 'First wide zone'
+                second:
+                    name: 'Second zone'
+                third:
+                    name: 'Third wide zone'
+
+#        '1__2_1__2_1':
+#            identifier: '1__2_1__2_1'
+#            name: '5 Zones, 2x 2+1 Column'
+#            description: 'Five zones, full width, 2x two columns narrow left, wide right in first row and one row'
+#            thumbnail: '/assets/images/page_builder/layouts/1__2_1__2_1.png'
+#            template: '@ezdesign/layouts/1__2_1__2_1.html.twig'
+#            zones:
+#                first:
+#                    name: 'First zone'
+#                second:
+#                    name: 'Second zone'
+#                third:
+#                    name: 'Third zone'
+#                third:
+#                    name: 'Third zone'
 
 
     blocks:
@@ -73,6 +103,10 @@ ezplatform_page_fieldtype:
                 schedule_hero:
                     template: '@ezdesign/blocks/schedule_hero.html.twig'
                     name: 'Platform EE Demo schedule hero'
+
+                tastes_contentlist:
+                    template: '@ezdesign/blocks/tastes_contentlist.html.twig'
+                    name: 'Platform EE Demo tastes contentlist'
 
         banner:
             views:
@@ -93,6 +127,10 @@ ezplatform_page_fieldtype:
                 blog:
                     template: '@ezdesign/blocks/blog.html.twig'
                     name: 'Platform EE Demo blog block'
+
+                embed_wide:
+                    template: '@ezdesign/blocks/embed_wide.html.twig'
+                    name: 'Platform EE Demo wide embed block'
 
         places:
             views:

@@ -308,34 +308,209 @@ h4.header {
     text-transform: uppercase;
 }
 
-.schedule-layout--grid {
-    margin-top: 20px;
+/* landing page */
+.landing-page__block {
+    padding-bottom: 30px;
+    margin-bottom: 0;
 }
 
-.schedule-layout--grid-list {
-    position: relative;
-    min-height: 1px;
-}
-
-.grid-main .thumbnail {
+.landing-page--dynamic > .container-fluid {
     padding: 0;
-    border: 0 none;
-    border-radius: 0;
 }
 
-.schedule-layout--grid p{
-    color: #999;
-    font-style: italic;
-    margin: 20px;
+.landing-page--dynamic .places-background,
+.landing-page__block.block_places {
+    background-color: #261B2F;
+    position: relative;
 }
 
-.schedule-layout--grid h5{
-    padding: 25px 20px;
-    font-size: 2em;
-    font-weight: bold;
+.content-type-landing-page.full-view {
+    background: #fff;
 }
 
-.schedule-layout--grid a {
-    color: #000;
+.content-type-blog-post.embed-wide .thumbnail {
     display: block;
+    position: relative;
+    background: #000;
+}
+
+.content-type-blog-post.embed-wide .thumbnail img {
+    opacity: 0.5;
+    max-height: 500px;
+    object-fit: cover;
+}
+
+.content-type-blog-post.embed-wide .title {
+    position: absolute;
+    top: 44%;
+    left: 0;
+    width: 100%;
+}
+
+.content-type-blog-post.embed-wide h1.field-title {
+    color: #fff;
+    margin: 0;
+}
+
+/* Content List for Tastes */
+.landing-page__block .tastes-content-list {
+    padding: 20px;
+    margin-top: 45px;
+}
+
+.landing-page__block .tastes-content-list h2 {
+    color: #0073AE;
+    font-family: "Source Sans Pro";
+    font-size: 35px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.landing-page__block .tastes-content-list h3 {
+    color: #706B68;
+    font-family: "Source Sans Pro";
+    font-size: 21px;
+    text-align: center;
+}
+
+.landing-page__block .tastes-content-list .block-contentlist-items {
+    display: flex;
+}
+
+/* blog post */
+.content-type-blog-post.embed .thumbnail img {
+    max-height: 450px;
+    object-fit: cover;
+}
+.content-type-blog-post.embed .thumbnail {
+    max-height: 450px;
+}
+
+.content-type-blog-post.embed .title {
+    background: #3c3330;
+    position: absolute;
+    bottom: 47px;
+    height: 97px;
+    width: 421px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-type-blog-post.embed .title a {
+    color: #fff;
+    font-size: 32px;
+}
+
+.content-type-blog-post.embed .title a:hover {
+    text-decoration: none;
+}
+
+
+.landing-page__zone .places-map-block-view .explore {
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+}
+
+.landing-page__zone .places-map-block-view .explore .btn-block {
+    background: initial;
+    border: 1px solid #fff;
+    width: 293px;
+    font-size: 21px;
+    text-align: center;
+}
+
+.places-map-block-view .places-map {
+    min-height: 646px;
+}
+
+.places-map-block-view .leaflet-container {
+    background: #261b2f;
+}
+
+.places-map-block-view .title {
+    font-family: "Playfair Display";
+    color: #fff;
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    padding: 30px;
+}
+
+/* place embed wide */
+.landing-page__block.block_embed {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.landing-page__block.block_embed .places-to-go {
+    background-color: #261B2F;
+    margin-bottom: 0;
+    padding: 0;
+    height: 628px;
+}
+
+.content-type-place-item-container .banner-image {
+    max-height: 628px;
+    position: relative;
+    display: block;
+}
+
+.content-type-place-item-container.embed-wide .thumbnail {
+    display: block;
+    position: relative;
+}
+
+.content-type-place-item-container.embed-wide .thumbnail img {
+
+    max-height: 500px;
+    object-fit: cover;
+}
+
+.content-type-place-item-container.embed-wide .info-panel {
+    top: 50px;
+    width: 424px;
+    height: 579px;
+    background: #0073AE;
+    position: relative;
+    padding: 40px;
+    color: #fff;
+    font-family: "Source Sans Pro";
+}
+
+.content-type-place-item-container.embed-wide .panel-container {
+    position: absolute;
+    width: 100%;
+    height: 628px;
+    top: 0;
+}
+
+.content-type-place-item-container.embed-wide .info-panel .field-header {
+    font-size: 35px;
+    font-weight: bold;
+    padding-bottom: 45px;
+}
+
+.content-type-place-item-container.embed-wide .info-panel .field-intro p {
+    font-size: 27px;
+    font-weight: 600;
+    padding-bottom: 45px;
+    font-family: "Source Sans Pro";
+}
+
+.content-type-place-item-container.embed-wide .info-panel .field-caption {
+    font-size: 17px;
+    line-height: 25px;
+    font-family: "Source Sans Pro";
+    padding-bottom: 35px;
+    display: block;
+}
+
+.content-type-place-item-container.embed-wide .info-panel .link a {
+    font-family: "Source Sans Pro";
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 25px;
+    color: #fff;
 }

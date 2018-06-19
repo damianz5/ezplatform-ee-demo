@@ -1,0 +1,149 @@
+## tmp migrations
+
+-
+    type: content
+    mode: create
+    content_type: image
+    section: 3 #reference:ref_section__media
+    parent_location: 51 #reference:ref_folder__media__images
+    attributes:
+        name: Homepage hero
+        image: 'web/assets/images/landing_page/Homepage-banner.jpg'
+    references:
+        -
+            identifier: ref_location_image__media__images__homepage_hero
+            attribute: location_id
+        -
+            identifier: ref_content_image__media__images__homepage_hero
+            attribute: content_id
+
+-
+    type: content
+    mode: create
+    content_type: landing_page
+    parent_location: 2
+    section: 1
+    owner: admin
+    attributes:
+        name: q1
+        description: q1
+        page: >- #json
+            {
+                "layout": "1w__1__1w",
+                "zones": [
+                    {
+                        "id": "hp-z-1",
+                        "name": "First wide zone",
+                        "blocks": [
+                            {
+                                "id": "",
+                                "type": "hero",
+                                "name": "Hero wide",
+                                "view": "default",
+                                "compiled": "",
+                                "attributes": [
+                                    {
+                                        "id": "",
+                                        "name": "text",
+                                        "value": "Explore Tastes and Places of the World"
+                                    },
+                                    {
+                                        "id": "",
+                                        "name": "contentId",
+                                        "value": [reference:ref_content_image__media__images__homepage_hero]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "hp-z-2",
+                        "name": "Second zone",
+                        "blocks": [
+                            {
+                                "id": "24",
+                                "type": "embed",
+                                "name": "Embed NYC",
+                                "view": "embed",
+                                "compiled": "",
+                                "attributes": [
+                                    {
+                                        "id": "41",
+                                        "name": "contentId",
+                                        "value": "217"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "",
+                                "type": "contentlist",
+                                "name": "Content List",
+                                "view": "tastes_contentlist",
+                                "compiled": "",
+                                "attributes": [
+                                    {
+                                        "id": "68",
+                                        "name": "contentId",
+                                        "value": "95"
+                                    },
+                                    {
+                                        "id": "69",
+                                        "name": "limit",
+                                        "value": "3"
+                                    },
+                                    {
+                                        "id": "70",
+                                        "name": "contentType",
+                                        "value": "article"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "hp-z-3",
+                        "name": "Third wide zone",
+                        "blocks": [
+                            {
+                                "id": "b-1fd67a94-51f4-76dc-7148-7f7f961280e1",
+                                "type": "embed",
+                                "name": "Embed amsterdam",
+                                "view": "embed_wide",
+                                "class": "places-to-go",
+                                "compiled": "",
+                                "attributes": [
+                                    {
+                                        "id": "a-67496eb1-ce23-49f4-dfe4-7d10776da731",
+                                        "name": "contentId",
+                                        "value": "224"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "",
+                                "type": "places",
+                                "name": "Places",
+                                "view": "map",
+                                "class":"places-background",
+                                "compiled": "",
+                                "attributes": [
+                                    {
+                                        "id": "66",
+                                        "name": "contentId",
+                                        "value": "235"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+
+    references:
+        -
+            identifier: ref_content_landing_page__q1
+            attribute: content_id
+        -
+            identifier: ref_location_landing_page__q1
+            attribute: location_id
+

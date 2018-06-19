@@ -1,73 +1,66 @@
 {% extends ':blocks:_block.html.twig' %}
 
 {% block block_identifier %}map{% endblock %}
-{% block block_class %}row {{ block_class }}{% endblock %}
-
-{% set wrapper = 'map' %}
+{% block block_class %}{{ block_class }}{% endblock %}
 
 {% block block_content %}
-    <div class="col-md-10 offset-md-1">
-        <div id="{{ wrapper }}"></div>
-        <a href="{{ path(location) }}" class="btn btn-primary btn-lg btn-block">{{ 'See locations'|trans }}</a>
+<div class="places-map-block-view container">
+
+    <div class="title">Destinations</div>
+
+    <div class="places-map"></div>
+    <div class="explore">
+        <a href="{{ path(location) }}" class="btn btn-primary btn-lg btn-block">{{ 'Explore destinations'|trans }}</a>
     </div>
+</div>
 
-    <script>
-        {% autoescape 'js' %}
-        function initMap() {
-            var latLngs = [
-                        {% if contentArray|length > 0 %}
-                        {% for content in contentArray %}
-                    {
-                        id: {{ content.versionInfo.contentInfo.id }},
-                        name: '{{ ez_render_field(content, "name") }}',
-                        lat: {{ ez_field_value( content, 'location' ).latitude }},
-                        lng: {{ ez_field_value( content, 'location' ).longitude }}
-                    }{% if loop.index < contentArray|length %}, {% endif %}
-                        {% endfor %}
-                        {% endif %}
-                ],
-                bounds = new google.maps.LatLngBounds(),
-                infowindow = new google.maps.InfoWindow(),
-                map = new google.maps.Map(document.getElementById('{{ wrapper }}'), {
-                    zoom: 2,
-                    center: {lat: 0, lng: 0}
-                }),
-                markers = [];
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"
+      integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+      crossorigin=""/>
 
-            for (var i = 0; i < latLngs.length; i++) {
-                placeMarker(latLngs[i], i);
-            }
-            map.fitBounds(bounds);
+<script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"
+        integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
+        crossorigin=""></script>
 
-            function placeMarker(place, i) {
-                var marker = new google.maps.Marker({
-                    position: {lat: place.lat, lng: place.lng},
-                    map: map,
-                    title: place.name,
-                    animation: google.maps.Animation.DROP
+<script>
+    (function (global, doc) {
+        var places = [];
+        var mapLocation = doc.querySelector('.places-map');
+        var map = global.L.map(mapLocation, {
+            zoom: 1.5,
+            zoomControl: false,
+            scrollWheelZoom: false,
+            dragging: false,
+            tap: false,
+            center: [40,0],
+            view: [40,0]
+        });
+
+        map.doubleClickZoom.disable();
+
+        {% if contentArray|length > 0 %}
+            {% for content in contentArray %}
+                places.push({
+                    name: '{{ ez_render_field(content, "name") }}',
+                    lat: {{ ez_field_value( content, 'location' ).latitude }},
+                    lng: {{ ez_field_value( content, 'location' ).longitude }}
                 });
+            {% endfor %}
+        {% endif %}
 
-                bounds.extend(marker.position);
+        places.forEach(function(item){
+            global.L.marker([parseFloat(item.lat), parseFloat(item.lng)], {
+                icon: new window.L.Icon.Default({
+                    imagePath: '/bundles/ezplatformadminuiassets/vendors/leaflet/dist/images/'
+                })
+            }).addTo(map);
+        });
 
-                google.maps.event.addListener(marker, 'click', (function (marker, i) {
-                    return function () {
-                        infowindow.setContent(place.name);
-                        infowindow.open(map, marker);
-                    }
-                })(marker, i));
-
-                markers.push(marker);
-            }
-
-            google.maps.event.addDomListener(window, "resize", function() {
-                var center = map.getCenter();
-
-                google.maps.event.trigger(map, "resize");
-                map.setCenter(center);
-                map.fitBounds(bounds);
-            });
-        }
-        {% endautoescape %}
-    </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?callback=initMap"></script>
+        global.L.tileLayer('/assets/images/map_tile/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions" target="_blank">CartoDB</a>',
+            maxZoom: 19,
+            noWrap: true
+        }).addTo(map);
+    })(window, document);
+</script>
 {% endblock %}

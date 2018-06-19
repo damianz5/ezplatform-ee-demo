@@ -2,13 +2,13 @@
 -
     type: content_type_group
     mode: create
-    identifier: Page
+    identifier: Pages
 
 # landing_page content type
 -
     type: content_type
     mode: create
-    content_type_group: Page
+    content_type_group: Pages
     identifier: landing_page
     name: Landing page
     name_pattern: <name>

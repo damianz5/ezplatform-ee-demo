@@ -7,3 +7,13 @@ services:
         tags:
             - { name: ezplatform.installer, type: ezplatform-ee-demo }
             - { name: ezplatform.installer, type: platform-ee-demo }
+
+    # TODO: only for development, delete it
+    app.installer.ee-demo_quick_installer:
+        parent: ezplatform.installer.db_based_installer
+        class: AppBundle\Installer\PlatformEEQuickDemoInstaller
+        calls:
+            - [setEnvironment, ["%kernel.environment%"]]
+        tags:
+            - { name: ezplatform.installer, type: ezplatform-ee-demo-quick }
+            - { name: ezplatform.installer, type: eedq }
