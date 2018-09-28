@@ -277,6 +277,6 @@ ezpublish:
 
                 block_item_hero:
                     default:
-                        template: "@ezdesign/block_item_hero/default.html.twig"
+                        template: "@ezdesign/block_item/hero/default.html.twig"
                         match:
                             Identifier\ContentType: [landing_page, blog, about, article, blog_post, image, place]
