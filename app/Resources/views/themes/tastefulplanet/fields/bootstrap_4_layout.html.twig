@@ -1,0 +1,57 @@
+{% use "bootstrap_4_layout.html.twig" %}
+
+{%- block form_widget_simple -%}
+    {%- set type = type|default('text') -%}
+
+    {% if type == 'file' %}
+    <style>
+        .ezform_file_widget {
+            width: 361px;
+            height: 169px;
+            border: 1px solid #d3d3d3;
+            position: relative;
+        }
+
+        .file_input,
+        .file_input input {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .file_input_container {
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            position: absolute;
+            top: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+        }
+
+        .file_input_container--image {
+            padding-bottom: 10px;
+        }
+
+    </style>
+
+        <div class="ezform_file_widget">
+            <div class="file_input">
+                {{ parent() }}
+            </div>
+            <div class="file_input_container">
+                <span class="file_input_container--image">
+                    <img src="{{ asset('assets/images/form/field_file.png') }}"/>
+                </span>
+                <span class="file_input_container--button">
+                    <div class="btn btn-primary">Browse File</div>
+                </span>
+            </div>
+        </div>
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{%- endblock form_widget_simple -%}
