@@ -20,6 +20,13 @@
     mode: set
     identifier: ref_user_group__anonymous_users
     value: 42 #contentId
+
+-
+    type: reference
+    mode: set
+    identifier: ref_location__media
+    value: 43 #locationId
+
 #-
 #    type: reference
 #    mode: set
@@ -190,6 +197,41 @@
             identifier: ref_user_group__app_contributors
             attribute: user_group_id
 
+-
+    type: user_group
+    mode: create
+    parent_group_id: 4
+    priority: 0
+    section: 2
+    name: 'Designers'
+    references:
+        -
+            identifier: ref_user_group__designers
+            attribute: user_group_id
+
+-
+    type: user_group
+    mode: create
+    parent_group_id: 4
+    priority: 0
+    section: 2
+    name: 'Proofreaders'
+    references:
+        -
+            identifier: ref_user_group__proofreaders
+            attribute: user_group_id
+-
+    type: user_group
+    mode: create
+    parent_group_id: 4
+    priority: 0
+    section: 2
+    name: 'Publishers'
+    references:
+        -
+            identifier: ref_user_group__publishers
+            attribute: user_group_id
+
 # users
 # Yura
 -
@@ -229,7 +271,7 @@
      email: jessica.andaya@example.com
      password: publish
      user_content_type: user
-     groups: [reference:ref_user_group__editors]
+     groups: [reference:ref_user_group__designers]
      references:
          -
              identifier: ref_user_jessica
@@ -257,7 +299,7 @@
      email: anil.rajasthani@example.com
      password: publish
      user_content_type: user
-     groups: [reference:ref_user_group__editors]
+     groups: [reference:ref_user_group__proofreaders]
      references:
          -
              identifier: ref_user_anil
@@ -360,6 +402,22 @@
          interests:
             - { tag_id: reference:ref_tag_user_segments__chef }
 
+# Gerard Riddle
+-
+    type: user
+    mode: create
+    first_name: Gerard
+    last_name: Riddle
+    username: gerard
+    email: gerard.riddle@example.com
+    password: publish
+    user_content_type: user
+    groups: [reference:ref_user_group__publishers]
+    references:
+        -
+            identifier: ref_user_gerard
+            attribute: user_id
+
 ## Roles and permissions
 -
     type: role
@@ -418,26 +476,8 @@
             module: user
             function: login
         -
-            module: content
-            function: '*'
-        -
-            module: ezoe
-            function: '*'
-        -
             module: notification
             function: use
-        -
-            module: ezodf
-            function: '*'
-        -
-            module: ezflow
-            function: '*'
-        -
-            module: ezajax
-            function: '*'
-        -
-            module: rss
-            function: feed
         -
             module: section
             function: view
@@ -447,13 +487,26 @@
         -
             module: content
             function: reverserelatedlist
+        -
+            module: content
+            function: create
+            limitations:
+                - { identifier: Class, values: [article] }
+        -
+            module: content
+            function: edit
+            limitations:
+                - { identifier: WorkflowStage, values: ['article_workflow:draft'] }
+        -
+            module: workflow
+            function: change_stage
+            limitations:
+                - { identifier: WorkflowTransition, values: ['article_workflow:to_design'] }
+
     assign:
         -
             type: group
             ids: [reference:ref_user_group__editors]
-        -
-            type: user
-            ids: [reference:ref_user_yura, reference:ref_user_jessica, reference:ref_user_anil]
 
 -
     type: role
@@ -546,6 +599,126 @@
         -
             type: user
             ids: [reference:ref_user_christine]
+
+-
+    type: role
+    mode: create
+    name: 'Designer'
+    policies:
+        -
+            module: user
+            function: login
+            limitations: {  }
+        -
+            module: content
+            function: read
+            limitations: {  }
+        -
+            module: content
+            function: versionread
+            limitations: {  }
+        -
+            module: tags
+            function: '*'
+            limitations: {  }
+        -
+            module: content
+            function: create
+            limitations:
+                - { identifier: Class, values: [gallery, image] }
+                - { identifier: Node, values: [reference:ref_location__media] }
+        -
+            module: content
+            function: publish
+            limitations:
+                - { identifier: Class, values: [gallery, image] }
+                - { identifier: Node, values: [reference:ref_location__media] }
+        -
+            module: content
+            function: edit
+            limitations:
+                - { identifier: WorkflowStage, values: ['article_workflow:design'] }
+        -
+            module: workflow
+            function: change_stage
+            limitations:
+                - { identifier: WorkflowTransition, values: ['article_workflow:to_proofread', 'article_workflow:back_to_draft'] }
+    assign:
+        -
+            type: group
+            ids: [reference:ref_user_group__designers]
+
+-
+    type: role
+    mode: create
+    name: 'Proofreader'
+    policies:
+        -
+            module: user
+            function: login
+            limitations: {  }
+        -
+            module: content
+            function: read
+            limitations: {  }
+        -
+            module: content
+            function: versionread
+            limitations: {  }
+        -
+            module: tags
+            function: '*'
+            limitations: {  }
+        -
+            module: content
+            function: edit
+            limitations:
+                - { identifier: WorkflowStage, values: ['article_workflow:proofread'] }
+        -
+            module: workflow
+            function: change_stage
+            limitations:
+                - { identifier: WorkflowTransition, values: ['article_workflow:done', 'article_workflow:back_to_design',  'article_workflow:back_to_draft'] }
+    assign:
+        -
+            type: group
+            ids: [reference:ref_user_group__proofreaders]
+
+-
+    type: role
+    mode: create
+    name: 'Publisher'
+    policies:
+        -
+            module: user
+            function: login
+            limitations: {  }
+        -
+            module: content
+            function: read
+            limitations: {  }
+        -
+            module: content
+            function: versionread
+            limitations: {  }
+        -
+            module: tags
+            function: '*'
+            limitations: {  }
+        -
+            module: content
+            function: publish
+            limitations:
+                - { identifier: WorkflowStage, values: ['article_workflow:done'] }
+        -
+            module: content
+            function: edit
+            limitations:
+                - { identifier: WorkflowStage, values: ['article_workflow:done'] }
+    assign:
+        -
+            type: group
+            ids: [reference:ref_user_group__publishers]
 
 -
     type: reference
