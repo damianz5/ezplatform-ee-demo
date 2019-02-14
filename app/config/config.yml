@@ -9,6 +9,8 @@ imports:
     - { resource: services.yml }
     - { resource: services/ }
     - { resource: blocks.yml }
+    - { resource: ecommerce.yml }
+    - { resource: ecommerce_parameters.yml }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -30,6 +32,7 @@ doctrine:
                 user: '%database_user%'
                 password: '%database_password%'
                 charset: utf8mb4
+                server_version: '%database_server_version%'
     orm:
         auto_generate_proxy_classes: '%kernel.debug%'
         naming_strategy: doctrine.orm.naming_strategy.underscore
@@ -88,6 +91,9 @@ framework:
 twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
+    form_themes:
+        - 'bootstrap_3_layout.html.twig'
+        - 'SilversolutionsEshopBundle:Forms:form_div_layout.html.twig'
 
 # Assetic Configuration
 assetic:

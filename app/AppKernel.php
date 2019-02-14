@@ -53,9 +53,6 @@ class AppKernel extends Kernel
             new EzSystems\EzPlatformAdminUiAssetsBundle\EzPlatformAdminUiAssetsBundle(),
             new EzSystems\EzPlatformCronBundle\EzPlatformCronBundle(),
             new EzSystems\CommentsBundle\EzSystemsCommentsBundle(),
-            // Dependencies
-            new Lolautruche\EzCoreExtraBundle\EzCoreExtraBundle(),
-            new Netgen\TagsBundle\NetgenTagsBundle(),
             // eZ Platform EE
             new EzSystems\EzPlatformPageFieldTypeBundle\EzPlatformPageFieldTypeBundle(),
             new EzSystems\EzPlatformPageBuilderBundle\EzPlatformPageBuilderBundle(),
@@ -65,6 +62,51 @@ class AppKernel extends Kernel
             new EzSystems\RecommendationBundle\EzSystemsRecommendationBundle(),
             new EzSystems\PersonalizedBlockBundle\EzSystemsPersonalizedBlockBundle(),
             new EzSystems\EzPlatformWorkflowBundle\EzPlatformWorkflowBundle(),
+
+            // from ezc
+            new EzSystems\EzPlatformEnterpriseEditionInstallerBundle\EzPlatformEnterpriseEditionInstallerBundle(),
+
+            // Dependencies
+            new Lolautruche\EzCoreExtraBundle\EzCoreExtraBundle(),
+            new Netgen\TagsBundle\NetgenTagsBundle(),
+
+            // eZ Commerce
+            new FOS\CommentBundle\FOSCommentBundle(),
+            new Tedivm\StashBundle\TedivmStashBundle(),
+            new WhiteOctober\BreadcrumbsBundle\WhiteOctoberBreadcrumbsBundle(),
+            new Nelmio\SolariumBundle\NelmioSolariumBundle(),
+            new JMS\Payment\CoreBundle\JMSPaymentCoreBundle(),
+//            new JMS\Payment\PaypalBundle\JMSPaymentPaypalBundle(),
+            new Joli\ApacheTikaBundle\ApacheTikaBundle(),
+            new Siso\Bundle\OneSkyBundle\OneSkyBundle(),
+            new Silversolutions\Bundle\EshopBundle\SilversolutionsEshopBundle(),
+            new Silversolutions\Bundle\DatatypesBundle\SilversolutionsDatatypesBundle(),
+            new Silversolutions\Bundle\ToolsBundle\SilversolutionsToolsBundle(),
+            new Silversolutions\Bundle\TranslationBundle\SilversolutionsTranslationBundle(),
+            new Siso\Bundle\EzStudioBundle\SisoEzStudioBundle(),
+            new Siso\Bundle\CheckoutBundle\SisoCheckoutBundle(),
+            new Siso\Bundle\ComparisonBundle\SisoComparisonBundle(),
+            new Siso\Bundle\PaymentBundle\SisoPaymentBundle(),
+//            new Siso\Bundle\PaypalPaymentBundle\SisoPaypalPaymentBundle(),
+            // duplicated:
+            //new Kaliop\eZMigrationBundle\EzMigrationBundle(),
+            new Siso\Bundle\PriceBundle\SisoPriceBundle(),
+            new Siso\Bundle\QuickOrderBundle\SisoQuickOrderBundle(),
+            new Siso\Bundle\ToolsBundle\SisoToolsBundle(),
+            new Siso\Bundle\TestToolsBundle\SisoTestToolsBundle(),
+            new Siso\Bundle\SearchBundle\SisoSearchBundle(),
+            new Siso\Bundle\VoucherBundle\SisoVoucherBundle(),
+            new Siso\ShopPriceEnginePluginBundle\ShopPriceEnginePluginBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle($this),
+            new JMS\JobQueueBundle\JMSJobQueueBundle(),
+            new Siso\Bundle\LocalOrderManagementBundle\SisoLocalOrderManagementBundle(),
+            new Siso\Bundle\NewsletterBundle\SisoNewsletterBundle(),
+            new Siso\Bundle\VariantTypeBundle\SisoVariantTypeBundle(),
+            new Siso\Bundle\SpecificationsTypeBundle\SisoSpecificationsTypeBundle(),
+            new Siso\Bundle\ContentPluginBundle\SisoContentPluginBundle(),
+            new Siso\Bundle\OrderHistoryBundle\SisoOrderHistoryBundle(),
+            new \Siso\AdminErpPluginBundle\SisoAdminErpPluginBundle(),
+
             // Application
             new AppBundle\AppBundle(),
         ];

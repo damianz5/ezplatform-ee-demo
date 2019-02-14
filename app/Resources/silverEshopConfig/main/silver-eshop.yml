@@ -1,0 +1,93 @@
+siso_core.default.category_view: product_list
+silver_eshop.default.last_viewed_products_in_session_limit: 10
+silver_eshop.default.catalog_description_limit: 50
+siso_core.default.currency_rate_changed_at: 01.01.2018
+siso_core.default.automatic_currency_conversion: true
+siso_core.default.currency_list:
+    EUR: '1'
+    USD: '1.23625'
+    GBP: '0.86466'
+    CAD: '1.55686'
+siso_core.default.standard_price_factory.fallback_currency: EUR
+siso_core.default.standard_price_factory.base_currency: EUR
+siso_price.default.price_service_chain.product_list:
+    - siso_price.price_provider.shop
+siso_price.default.price_service_chain.product_detail:
+    - siso_price.price_provider.shop
+    - siso_price.price_provider.shop
+siso_price.default.price_service_chain.slider_product_list:
+    - siso_price.price_provider.shop
+siso_price.default.price_service_chain.basket:
+    - siso_price.price_provider.shop
+    - siso_price.price_provider.shop
+siso_price.default.price_service_chain.basket_variant:
+    - siso_price.price_provider.shop
+    - siso_price.price_provider.shop
+siso_price.default.price_service_chain.stored_basket:
+    - siso_price.price_provider.shop
+siso_price.default.price_service_chain.wish_list:
+    - siso_price.price_provider.shop
+siso_price.default.price_service_chain.quick_order:
+    - siso_price.price_provider.shop
+    - siso_price.price_provider.shop
+siso_price.default.price_service_chain.quick_order_line_preview:
+    - siso_price.price_provider.shop
+siso_price.default.price_service_chain.comparison:
+    - siso_price.price_provider.shop
+siso_price.default.price_service_chain.search_list:
+    - siso_price.price_provider.shop
+siso_price.default.price_service_chain.bestseller_list:
+    - siso_price.price_provider.shop
+siso_core.default.marketing.olark_chat.activated: false
+siso_core.default.marketing.olark_chat.id: 6295-386-10-7457
+siso_basket.default.discontinued_products_listener_active: true
+siso_basket.default.discontinued_products_listener_consider_packaging_unit: true
+siso_checkout.default.order_confirmation.sales_email_address: ''
+siso_newsletter.default.newsletter_active: false
+siso_newsletter.default.unsubscribe_globally: true
+siso_newsletter.default.display_newsletter_box_for_logged_in_users: true
+siso_newsletter.default.newsletter2go_username: ''
+siso_newsletter.default.newsletter2go_password: ''
+siso_newsletter.default.newsletter2go_auth_key: ''
+ses_basket.default.validHours: 120
+ses_basket.default.refreshCatalogElementAfter: '1 hours'
+ses_basket.default.stock_in_column: true
+ses_basket.default.description_limit: 50
+ses_basket.default.additional_text_for_basket_line: false
+ses_basket.default.additional_text_for_basket_line_input_limit: 30
+ses_stored_basket.default.stock_in_column: true
+ses_stored_basket.default.description_limit: 50
+ses_wishlist.default.description_limit: 50
+siso_core.default.template_debitor_country: DE
+siso_core.default.enable_customer_number_login: false
+siso_core.default.use_template_debitor_customer_number: true
+siso_core.default.use_template_debitor_contact_number: true
+siso_core.default.price_requests_without_customer_number: true
+ses_basket.default.recalculatePricesAfter: '3 hours'
+silver_eshop.default.erp.variant_handling: SKU_ONLY
+siso_erp.default.web_connector.service_location: 'http://webconnproxy.silver-eshop.de?config=harmony_wc3_noop_mapping'
+silver_eshop.default.webconnector.username: admin
+silver_eshop.default.webconnector.password: passwo
+silver_eshop.default.webconnector.soapTimeout: 5
+silver_eshop.default.webconnector.erpTimeout: 5
+siso_core.default.bestseller_limit_on_bestseller_page: 6
+siso_core.default.bestseller_limit_on_catalog_page: 6
+siso_core.default.bestseller_limit_in_silver_module: 6
+siso_core.default.bestseller_threshold: 1
+siso_checkout.default.payment_method.paypal_express_checkout: true
+siso_checkout.default.payment_method.invoice: true
+siso_checkout.default.shipping_method.standard: true
+siso_checkout.default.shipping_method.express_delivery: false
+siso_local_order_management.default.shipping_cost: ''
+siso_local_order_management.default.shipping_free: ''
+siso_core.default.shipping_vat_code: '19'
+siso_core.en.standard_price_factory.fallback_currency: EUR
+siso_checkout.en.payment_method.paypal_express_checkout: true
+siso_checkout.en.payment_method.invoice: true
+siso_checkout.en.shipping_method.standard: true
+siso_checkout.en.shipping_method.express_delivery: true
+siso_core.de.standard_price_factory.fallback_currency: EUR
+siso_checkout.de.payment_method.paypal_express_checkout: true
+siso_checkout.de.payment_method.invoice: true
+siso_checkout.de.shipping_method.standard: true
+siso_checkout.de.shipping_method.express_delivery: true
