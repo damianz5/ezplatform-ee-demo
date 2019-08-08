@@ -1,0 +1,6 @@
+{% if contentId is defined and locationId is defined %}
+    {{ render(controller('ez_content:viewAction', {
+        locationId: locationId,
+        viewType: 'card'
+    })) }}
+{% endif %}

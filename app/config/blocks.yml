@@ -78,3 +78,20 @@ ezplatform_page_fieldtype:
                             options:
                                 pattern: '/^[1-9][0-9]*$/'
                             message: Limit must be a number greater than 0
+
+        simple_geo_profiler:
+            name: Simple Geo Profiler
+            category: default
+            thumbnail: '/bundles/ezplatformadminui/img/ez-icons.svg#places'
+            attributes:
+                contentId:
+                    type: embed
+                    name: Parent
+                    validators:
+                        not_blank:
+                            message: You must provide value
+                        regexp:
+                            options:
+                                pattern: '/[0-9]+/'
+                            message: Choose a container with Content items
+

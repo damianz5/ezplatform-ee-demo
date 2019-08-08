@@ -55,6 +55,10 @@ services:
         arguments:
             $queryType: '@AppBundle\QueryType\BlockQueryType'
 
+    AppBundle\Event\Subscriber\SimpleGeoProfilerBlockSubscriber:
+      arguments:
+        $queryType: '@AppBundle\QueryType\BlockQueryType'
+
     AppBundle\Twig\SearchResultExtractorExtension:
         tags:
             - { name: twig.extension }

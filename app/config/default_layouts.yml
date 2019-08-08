@@ -258,3 +258,9 @@ ezplatform_page_fieldtype:
                 list:
                     template: '@ezdesign/blocks/personalized/list.html.twig'
                     name: 'List'
+
+        simple_geo_profiler:
+            views:
+                default:
+                    template: '@ezdesign/blocks/simple_geo_profiler/default.html.twig'
+                    name: 'default'
