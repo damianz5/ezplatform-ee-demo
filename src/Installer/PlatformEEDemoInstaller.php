@@ -34,20 +34,42 @@ class PlatformEEDemoInstaller extends CoreInstaller
             $this->db->exec($dbPlatform->getTruncateTableSQL($tableName));
         }
 
+
         $migrationCommands = [
             'cache:clear',
             //'kaliop:migration:migrate --path=src/App/MigrationVersions/tags.yml -n',
+
             'kaliop:migration:migrate --path=src/MigrationVersions/languages.yml -v -n -u',
-            'kaliop:migration:migrate --path=src/MigrationVersions/product_list.yml -n -u',
             'kaliop:migration:migrate --path=src/MigrationVersions/all.yml -n -u',
-            'kaliop:migration:migrate --path=src/MigrationVersions/images.yml -v -n -u',
-            'kaliop:migration:migrate --path=src/MigrationVersions/content.yml -v -n -u',
-            'kaliop:migration:migrate --path=src/MigrationVersions/users.yml -v -n -u',
-            'kaliop:migration:migrate --path=src/MigrationVersions/landing_page_contenttype.yml -n -u',
-            'kaliop:migration:migrate --path=src/MigrationVersions/landing_page.yml -n -u',
-            'kaliop:migration:migrate --path=src/MigrationVersions/form.yml -n -u',
-            'kaliop:migration:migrate --path=src/MigrationVersions/cleanup-ee.yml -n -u',
+            'kaliop:migration:migrate --path=src/MigrationVersions/_folder.yml -v -n -u',
+
+//
+//            'kaliop:migration:migrate --path=src/MigrationVersions/product_list.yml -n -u',
+//
+//            'kaliop:migration:migrate --path=src/MigrationVersions/images.yml -v -n -u',
+//            'kaliop:migration:migrate --path=src/MigrationVersions/content.yml -v -n -u',
+//            'kaliop:migration:migrate --path=src/MigrationVersions/users.yml -v -n -u',
+//            'kaliop:migration:migrate --path=src/MigrationVersions/landing_page_contenttype.yml -n -u',
+//            'kaliop:migration:migrate --path=src/MigrationVersions/landing_page.yml -n -u',
+//            'kaliop:migration:migrate --path=src/MigrationVersions/form.yml -n -u',
+//            'kaliop:migration:migrate --path=src/MigrationVersions/cleanup-ee.yml -n -u',
         ];
+
+
+//        $migrationCommands = [
+//            'cache:clear',
+//            //'kaliop:migration:migrate --path=src/App/MigrationVersions/tags.yml -n',
+//            'kaliop:migration:migrate --path=src/MigrationVersions/languages.yml -v -n -u',
+//            'kaliop:migration:migrate --path=src/MigrationVersions/product_list.yml -n -u',
+//            'kaliop:migration:migrate --path=src/MigrationVersions/all.yml -n -u',
+//            'kaliop:migration:migrate --path=src/MigrationVersions/images.yml -v -n -u',
+//            'kaliop:migration:migrate --path=src/MigrationVersions/content.yml -v -n -u',
+//            'kaliop:migration:migrate --path=src/MigrationVersions/users.yml -v -n -u',
+//            'kaliop:migration:migrate --path=src/MigrationVersions/landing_page_contenttype.yml -n -u',
+//            'kaliop:migration:migrate --path=src/MigrationVersions/landing_page.yml -n -u',
+//            'kaliop:migration:migrate --path=src/MigrationVersions/form.yml -n -u',
+//            'kaliop:migration:migrate --path=src/MigrationVersions/cleanup-ee.yml -n -u',
+//        ];
 
         foreach ($migrationCommands as $cmd) {
             $this->output->writeln(sprintf('executing migration: %s', $cmd));
